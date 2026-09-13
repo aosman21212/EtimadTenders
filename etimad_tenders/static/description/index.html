@@ -1,162 +1,258 @@
 <meta charset="utf-8"/>
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Etimad Tenders &mdash; &#1605;&#1606;&#1589;&#1577; &#1575;&#1593;&#1578;&#1605;&#1575;&#1583;</h2>
-        <h3 class="oe_slogan">
-            Automatically fetch Saudi government tenders from
-            <a href="https://tenders.etimad.sa" target="_blank">tenders.etimad.sa</a>
-            and convert them into CRM opportunities.
-        </h3>
-        <div class="oe_span12">
-            <img src="screen_list.png" class="oe_picture oe_screenshot"
-                 alt="Tenders list view showing 24 live tenders fetched from Etimad"/>
-        </div>
-    </div>
-</section>
+<style>
+.et-wrap { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f4f8; color: #1a2332; }
+.et-wrap * { box-sizing: border-box; }
+.et-hero { background: linear-gradient(135deg, #1a3a5c 0%, #0f2840 100%); color: #fff; padding: 60px 40px; text-align: center; }
+.et-hero h1 { font-size: 2.4rem; font-weight: 800; margin: 0 0 12px; color: #fff; }
+.et-hero p { font-size: 1.1rem; opacity: .85; max-width: 640px; margin: 0 auto 24px; color: #fff; }
+.et-badge-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.et-badge { padding: 5px 16px; border-radius: 20px; font-size: .85rem; font-weight: 600; }
+.et-badge-green { background: #22c55e; color: #fff; }
+.et-badge-yellow { background: #f59e0b; color: #000; }
+.et-badge-blue { background: #3b82f6; color: #fff; }
+.et-badge-gray { background: rgba(255,255,255,.18); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+.et-arabic { font-size: 1.1rem; direction: rtl; opacity: .8; margin-bottom: 20px; display: block; color: #fff; }
+.et-section { padding: 52px 40px; max-width: 1200px; margin: 0 auto; }
+.et-dark { background: #fff; }
+.et-dark .et-inner { max-width: 1200px; margin: 0 auto; padding: 52px 40px; }
+.et-wrap h2 { font-size: 1.7rem; font-weight: 700; color: #1a3a5c; margin: 0 0 8px; }
+.et-sub { color: #64748b; margin: 0 0 36px; font-size: 1rem; }
+.et-screen { background: #fff; border-radius: 14px; box-shadow: 0 2px 20px rgba(0,0,0,.10); overflow: hidden; margin-bottom: 36px; }
+.et-screen-label { background: #1a3a5c; color: #fff; padding: 11px 20px; font-weight: 600; font-size: .93rem; display: flex; align-items: center; gap: 8px; }
+.et-tag { margin-left: auto; background: #d4a017; color: #000; border-radius: 10px; padding: 2px 10px; font-size: .75rem; font-weight: 700; }
+.et-screen img { width: 100%; display: block; border-top: 3px solid #2563eb; }
+.et-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.et-feat { display: flex; gap: 16px; align-items: flex-start; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 1px 6px rgba(0,0,0,.07); }
+.et-feat-icon { font-size: 1.1rem; background: #2563eb; color: #fff; border-radius: 10px; width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; }
+.et-feat h4 { font-size: .97rem; margin: 0 0 5px; color: #1a3a5c; }
+.et-feat p { font-size: .86rem; color: #64748b; line-height: 1.5; margin: 0; }
+.et-steps { list-style: none; padding: 0; margin: 0; }
+.et-steps li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid #e8edf2; }
+.et-steps li:last-child { border-bottom: none; }
+.et-step-num { background: #2563eb; color: #fff; width: 30px; height: 30px; border-radius: 50%; font-size: .82rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.et-steps p { font-size: .93rem; color: #334155; line-height: 1.5; margin: 0; }
+.et-sectors { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.et-sector { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; font-size: .88rem; }
+.et-id { font-size: .75rem; font-weight: 700; color: #2563eb; margin-right: 6px; }
+.et-ar { display: block; color: #64748b; font-size: .82rem; direction: rtl; text-align: right; margin-top: 2px; }
+.et-code { background: #1e293b; color: #e2e8f0; border-radius: 10px; padding: 20px 24px; font-family: 'Courier New', monospace; font-size: .88rem; line-height: 1.8; white-space: pre-wrap; overflow-x: auto; }
+.et-code .comment { color: #64748b; }
+.et-contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.et-contact h4 { color: #1a3a5c; margin: 0 0 8px; }
+.et-contact p { margin: 0 0 8px; color: #334155; font-size: .93rem; }
+.et-contact a { color: #2563eb; }
+.et-footer { background: #1a3a5c; color: rgba(255,255,255,.7); text-align: center; padding: 28px 20px; font-size: .88rem; }
+.et-footer a { color: #f59e0b; text-decoration: none; }
+.et-footer p { margin: 0; color: rgba(255,255,255,.7); }
+</style>
 
-<section class="oe_container oe_dark">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Full Tender Details</h2>
-        <div class="oe_span6">
-            <p class="oe_mt32">
-                Every tender is stored with its full metadata: agency name, tender type,
-                activity sector, estimated value, submission deadline, and a direct link
-                back to the Etimad platform for authenticated access.
-            </p>
-            <ul>
-                <li>Tender reference and external Etimad ID</li>
-                <li>Government agency and branch</li>
-                <li>Estimated value in SAR</li>
-                <li>Publish date, submission deadline, envelope &amp; offers dates</li>
-                <li>One-click conversion to a CRM Opportunity</li>
-            </ul>
-        </div>
-        <div class="oe_span6">
-            <img src="screen_form.png" class="oe_picture oe_screenshot"
-                 alt="Tender form view with full metadata"/>
-        </div>
+<div class="et-wrap">
+  <div class="et-hero">
+    <span class="et-arabic">&#1605;&#1606;&#1589;&#1577; &#1575;&#1593;&#1578;&#1605;&#1575;&#1583; &mdash; Saudi Government Tenders</span>
+    <h1>Etimad Tenders</h1>
+    <p>
+      Odoo 19 backend module that automatically fetches Saudi government
+      tenders from <strong>tenders.etimad.sa</strong> and stores them in
+      Odoo &mdash; ready to convert into CRM opportunities with one click.
+    </p>
+    <div class="et-badge-row">
+      <span class="et-badge et-badge-green">Odoo 19</span>
+      <span class="et-badge et-badge-yellow">Etimad API</span>
+      <span class="et-badge et-badge-blue">Auto Cron</span>
+      <span class="et-badge et-badge-gray">CRM Integration</span>
+      <span class="et-badge et-badge-gray">19 Sectors</span>
     </div>
-</section>
+  </div>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Manual Fetch Wizard</h2>
-        <div class="oe_span6">
-            <img src="screen_wizard.png" class="oe_picture oe_screenshot"
-                 alt="Manual fetch wizard dialog"/>
-        </div>
-        <div class="oe_span6">
-            <p class="oe_mt32">
-                Run a manual fetch at any time from the <strong>Fetch Tenders</strong> menu.
-                Filter by keyword or agency, choose how many pages to pull, and see instantly
-                how many records were created vs. updated.
-            </p>
-            <p>
-                A <strong>daily scheduled action</strong> (cron) runs automatically and
-                keeps the database up to date without manual intervention.
-            </p>
-        </div>
+  <div class="et-section">
+    <h2>Screenshots</h2>
+    <p class="et-sub">Live screenshots from the Odoo 19 backend.</p>
+
+    <div class="et-screen">
+      <div class="et-screen-label">Odoo Home Screen <span class="et-tag">App Tile</span></div>
+      <img src="screen_home.png" alt="Etimad Tenders app tile on the Odoo home screen"/>
     </div>
-</section>
-
-<section class="oe_container oe_dark">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Configuration</h2>
-        <div class="oe_span6">
-            <p class="oe_mt32">
-                Configure the integration from <strong>Etimad Tenders &rarr; Configuration</strong>:
-            </p>
-            <ul>
-                <li><strong>Page Size</strong> &mdash; records per API request (max 100)</li>
-                <li><strong>Pages per Cron</strong> &mdash; how many pages to pull each day</li>
-                <li><strong>Custom API URL</strong> &mdash; override if Etimad changes their endpoint</li>
-                <li><strong>Session Cookie</strong> &mdash; optional, for authenticated access</li>
-                <li><strong>Test Connection</strong> &mdash; verify connectivity in one click</li>
-            </ul>
-        </div>
-        <div class="oe_span6">
-            <img src="screen_config.png" class="oe_picture oe_screenshot"
-                 alt="Configuration settings for Etimad API"/>
-        </div>
+    <div class="et-screen">
+      <div class="et-screen-label">Tenders List View <span class="et-tag">24 live tenders</span></div>
+      <img src="screen_backend_list.png" alt="List of 24 Saudi government tenders"/>
     </div>
-</section>
+    <div class="et-screen">
+      <div class="et-screen-label">Tender Detail (Form View) <span class="et-tag">Full metadata</span></div>
+      <img src="screen_backend_form.png" alt="Tender form view with all metadata fields"/>
+    </div>
+    <div class="et-screen">
+      <div class="et-screen-label">Manual Fetch Wizard <span class="et-tag">Activity filter</span></div>
+      <img src="screen_backend_wizard.png" alt="Fetch wizard with activity/sector filter"/>
+    </div>
+    <div class="et-screen">
+      <div class="et-screen-label">Activity Sectors <span class="et-tag">19 sectors</span></div>
+      <img src="screen_activities.png" alt="All 19 Etimad activity sectors"/>
+    </div>
+    <div class="et-screen">
+      <div class="et-screen-label">Configuration <span class="et-tag">API settings</span></div>
+      <img src="screen_backend_config.png" alt="Configuration settings for Etimad API"/>
+    </div>
+  </div>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Key Features</h2>
-        <div class="oe_span4">
+  <div class="et-dark">
+    <div class="et-inner">
+      <h2>Key Features</h2>
+      <p class="et-sub">Everything you need to work with Saudi government tenders in Odoo.</p>
+      <div class="et-features">
+        <div class="et-feat">
+          <div class="et-feat-icon">1</div>
+          <div>
+            <h4>Auto Daily Fetch (Cron)</h4>
+            <p>Scheduled action pulls the latest tenders automatically every day. Configure pages per run from Settings.</p>
+          </div>
+        </div>
+        <div class="et-feat">
+          <div class="et-feat-icon">2</div>
+          <div>
+            <h4>Activity / Sector Filter</h4>
+            <p>Fetch only the sectors you care about. 19 sectors synced live from the Etimad API &mdash; ICT, Healthcare, Construction, and more.</p>
+          </div>
+        </div>
+        <div class="et-feat">
+          <div class="et-feat-icon">3</div>
+          <div>
+            <h4>Manual Fetch Wizard</h4>
+            <p>Run on demand with sector, keyword, and agency filters. See a summary of created vs. updated records instantly.</p>
+          </div>
+        </div>
+        <div class="et-feat">
+          <div class="et-feat-icon">4</div>
+          <div>
+            <h4>CRM Conversion</h4>
+            <p>One click converts any tender into a CRM Opportunity with agency, estimated value, and deadline pre-filled.</p>
+          </div>
+        </div>
+        <div class="et-feat">
+          <div class="et-feat-icon">5</div>
+          <div>
             <h4>Bot Protection Bypass</h4>
-            <p>
-                Smart session warm-up collects F5 TrafficShield cookies from the
-                Etimad listing page so all API calls succeed without CAPTCHAs.
-            </p>
+            <p>Smart warm-up GET collects F5 TrafficShield cookies so API calls always succeed without CAPTCHAs.</p>
+          </div>
         </div>
-        <div class="oe_span4">
-            <h4>CRM Integration</h4>
-            <p>
-                Convert any tender into a CRM Opportunity with agency, estimated
-                value, and deadline pre-filled &mdash; ready for your sales team.
-            </p>
-        </div>
-        <div class="oe_span4">
+        <div class="et-feat">
+          <div class="et-feat-icon">6</div>
+          <div>
             <h4>Duplicate-safe Upsert</h4>
-            <p>
-                Existing tenders are updated in-place; only new records are created.
-                Enforced by a unique constraint on the Etimad tender ID.
-            </p>
+            <p>New tenders are created; existing ones are updated in-place. Unique constraint enforced on Etimad tender ID.</p>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </div>
 
-<section class="oe_container oe_dark">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Contact LEAP AI</h2>
-        <h3 class="oe_slogan">King Abdulaziz Branch Road, Riyadh, Saudi Arabia</h3>
-        <div class="oe_span4">
-            <h4>Our Location</h4>
-            <p>
-                King Abdulaziz Branch Road<br/>
-                Riyadh, Saudi Arabia
-            </p>
-            <p>
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=King+Abdulaziz+Branch+Road,+Riyadh,+Saudi+Arabia"
-                   target="_blank">View on map</a>
-            </p>
-        </div>
-        <div class="oe_span4">
-            <h4>Send an Email</h4>
-            <p>
-                <a href="mailto:sales@leapai.ai">sales@leapai.ai</a>
-            </p>
-            <p>
-                <a href="mailto:sales@leapai.ai">Email us now</a>
-            </p>
-        </div>
-        <div class="oe_span4">
-            <h4>Call Anytime</h4>
-            <p>
-                <a href="tel:+966535533627">+966 53 553 3627</a>
-            </p>
-        </div>
+  <div class="et-section">
+    <h2>Activity Sectors (19)</h2>
+    <p class="et-sub">All sectors available as filters in the wizard and scheduled cron.</p>
+    <div class="et-sectors">
+      <div class="et-sector"><span class="et-id">[1]</span> Trade / Commerce <span class="et-ar">&#1575;&#1604;&#1578;&#1580;&#1575;&#1585;&#1577;</span></div>
+      <div class="et-sector"><span class="et-id">[2]</span> Construction &amp; Contracting <span class="et-ar">&#1575;&#1604;&#1605;&#1602;&#1575;&#1608;&#1604;&#1575;&#1578;</span></div>
+      <div class="et-sector"><span class="et-id">[3]</span> Facilities O&amp;M / Cleaning <span class="et-ar">&#1575;&#1604;&#1578;&#1588;&#1594;&#1610;&#1604; &#1608;&#1575;&#1604;&#1589;&#1610;&#1575;&#1606;&#1577; &#1608;&#1575;&#1604;&#1606;&#1592;&#1575;&#1601;&#1577;</span></div>
+      <div class="et-sector"><span class="et-id">[4]</span> Real Estate &amp; Land <span class="et-ar">&#1575;&#1604;&#1593;&#1602;&#1575;&#1585;&#1575;&#1578; &#1608;&#1575;&#1604;&#1571;&#1585;&#1575;&#1590;&#1610;</span></div>
+      <div class="et-sector"><span class="et-id">[5]</span> Industry, Mining &amp; Recycling <span class="et-ar">&#1575;&#1604;&#1589;&#1606;&#1575;&#1593;&#1577; &#1608;&#1575;&#1604;&#1578;&#1593;&#1583;&#1610;&#1606; &#1608;&#1575;&#1604;&#1578;&#1583;&#1608;&#1610;&#1585;</span></div>
+      <div class="et-sector"><span class="et-id">[6]</span> Gas, Water &amp; Energy <span class="et-ar">&#1575;&#1604;&#1594;&#1575;&#1586; &#1608;&#1575;&#1604;&#1605;&#1610;&#1575;&#1607; &#1608;&#1575;&#1604;&#1591;&#1575;&#1602;&#1577;</span></div>
+      <div class="et-sector"><span class="et-id">[7]</span> Mines, Petroleum &amp; Quarries <span class="et-ar">&#1575;&#1604;&#1605;&#1606;&#1575;&#1580;&#1605; &#1608;&#1575;&#1604;&#1576;&#1578;&#1585;&#1608;&#1604; &#1608;&#1575;&#1604;&#1605;&#1581;&#1575;&#1580;&#1585;</span></div>
+      <div class="et-sector"><span class="et-id">[8]</span> Media, Publishing &amp; Distribution <span class="et-ar">&#1575;&#1604;&#1573;&#1593;&#1604;&#1575;&#1605; &#1608;&#1575;&#1604;&#1606;&#1588;&#1585; &#1608;&#1575;&#1604;&#1578;&#1608;&#1586;&#1610;&#1593;</span></div>
+      <div class="et-sector"><span class="et-id">[9]</span> ICT / Telecommunications <span class="et-ar">&#1575;&#1604;&#1575;&#1578;&#1589;&#1575;&#1604;&#1575;&#1578; &#1608;&#1578;&#1602;&#1606;&#1610;&#1577; &#1575;&#1604;&#1605;&#1593;&#1604;&#1608;&#1605;&#1575;&#1578;</span></div>
+      <div class="et-sector"><span class="et-id">[10]</span> Agriculture &amp; Fishing <span class="et-ar">&#1575;&#1604;&#1586;&#1585;&#1575;&#1593;&#1577; &#1608;&#1575;&#1604;&#1589;&#1610;&#1583;</span></div>
+      <div class="et-sector"><span class="et-id">[11]</span> Healthcare <span class="et-ar">&#1575;&#1604;&#1585;&#1593;&#1575;&#1610;&#1577; &#1575;&#1604;&#1589;&#1581;&#1610;&#1577; &#1608;&#1575;&#1604;&#1606;&#1602;&#1575;&#1607;&#1577;</span></div>
+      <div class="et-sector"><span class="et-id">[12]</span> Education &amp; Training <span class="et-ar">&#1575;&#1604;&#1578;&#1593;&#1604;&#1610;&#1605; &#1608;&#1575;&#1604;&#1578;&#1583;&#1585;&#1610;&#1576;</span></div>
+      <div class="et-sector"><span class="et-id">[13]</span> Employment &amp; Recruitment <span class="et-ar">&#1575;&#1604;&#1578;&#1608;&#1592;&#1610;&#1601; &#1608;&#1575;&#1604;&#1575;&#1587;&#1578;&#1602;&#1583;&#1575;&#1605;</span></div>
+      <div class="et-sector"><span class="et-id">[14]</span> Security &amp; Safety <span class="et-ar">&#1575;&#1604;&#1571;&#1605;&#1606; &#1608;&#1575;&#1604;&#1587;&#1604;&#1575;&#1605;&#1577;</span></div>
+      <div class="et-sector"><span class="et-id">[15]</span> Transport, Postal &amp; Storage <span class="et-ar">&#1575;&#1604;&#1606;&#1602;&#1604; &#1608;&#1575;&#1604;&#1576;&#1585;&#1610;&#1583; &#1608;&#1575;&#1604;&#1578;&#1582;&#1586;&#1610;&#1606;</span></div>
+      <div class="et-sector"><span class="et-id">[16]</span> Consulting Services <span class="et-ar">&#1575;&#1604;&#1605;&#1607;&#1606; &#1575;&#1604;&#1575;&#1587;&#1578;&#1588;&#1575;&#1585;&#1610;&#1577;</span></div>
+      <div class="et-sector"><span class="et-id">[17]</span> Tourism, Restaurants &amp; Hotels <span class="et-ar">&#1575;&#1604;&#1587;&#1610;&#1575;&#1581;&#1577; &#1608;&#1575;&#1604;&#1605;&#1591;&#1575;&#1593;&#1605; &#1608;&#1575;&#1604;&#1601;&#1606;&#1575;&#1583;&#1602;</span></div>
+      <div class="et-sector"><span class="et-id">[18]</span> Finance &amp; Insurance <span class="et-ar">&#1575;&#1604;&#1605;&#1575;&#1604;&#1610;&#1577; &#1608;&#1575;&#1604;&#1578;&#1605;&#1608;&#1610;&#1604; &#1608;&#1575;&#1604;&#1578;&#1571;&#1605;&#1610;&#1606;</span></div>
+      <div class="et-sector"><span class="et-id">[19]</span> Other Services <span class="et-ar">&#1575;&#1604;&#1582;&#1583;&#1605;&#1575;&#1578; &#1575;&#1604;&#1571;&#1582;&#1585;&#1609;</span></div>
     </div>
-</section>
+  </div>
 
-<section class="oe_container">
-    <div class="oe_row oe_spaced">
-        <h2 class="oe_slogan">Developer</h2>
-        <h3 class="oe_slogan">
-            <a href="https://www.linkedin.com/in/abdulkaraim-o-385b7a110/" target="_blank">Abdulkaraim Osman</a>
-        </h3>
-        <div class="oe_span12">
-            <p class="text-center">
-                Tech Manager | Backend Engineer | DevOps Engineer<br/>
-                Bab International Corp For Specialized Services
-            </p>
-            <p class="text-center">
-                <a href="https://www.linkedin.com/in/abdulkaraim-o-385b7a110/" target="_blank">
-                    LinkedIn Profile
-                </a>
-            </p>
-        </div>
+  <div class="et-dark">
+    <div class="et-inner">
+      <h2>How It Works</h2>
+      <p class="et-sub">Five steps from API to CRM opportunity.</p>
+      <ul class="et-steps">
+        <li>
+          <div class="et-step-num">1</div>
+          <p><strong>Session warm-up</strong> &mdash; A GET to the Etimad listing page loads F5 TrafficShield cookies, bypassing bot protection automatically.</p>
+        </li>
+        <li>
+          <div class="et-step-num">2</div>
+          <p><strong>API call</strong> &mdash; <code>GET /Tender/AllSupplierTendersForVisitorAsync?TenderActivityId=X</code> returns paginated JSON filtered by sector.</p>
+        </li>
+        <li>
+          <div class="et-step-num">3</div>
+          <p><strong>Upsert</strong> &mdash; Each tender is matched by its Etimad ID. Existing records are updated; new ones are created.</p>
+        </li>
+        <li>
+          <div class="et-step-num">4</div>
+          <p><strong>CRM conversion</strong> &mdash; Click Convert to Opportunity on any tender to push it straight into the CRM pipeline.</p>
+        </li>
+        <li>
+          <div class="et-step-num">5</div>
+          <p><strong>Daily cron</strong> &mdash; A scheduled action repeats steps 1-3 every day for the configured sectors and page count.</p>
+        </li>
+      </ul>
     </div>
-</section>
+  </div>
+
+  <div class="et-section">
+    <h2>Installation</h2>
+    <p class="et-sub">Works on any Odoo 19 instance including Odoo.sh.</p>
+    <div class="et-code"><span class="comment"># 1. Copy the module folder to your addons path</span>
+cp -r etimad_tenders /home/odoo/src/user/
+
+<span class="comment"># 2. On Odoo.sh - commit and push</span>
+git add etimad_tenders/
+git commit -m "Add Etimad Tenders module"
+git push origin main
+
+<span class="comment"># 3. Install in Odoo</span>
+Apps - Enable developer mode - search "Etimad" - Install
+
+<span class="comment"># 4. First run - sync sectors, then fetch</span>
+Etimad Tenders - Fetch Tenders - Sync Sectors - Fetch Now</div>
+  </div>
+
+  <div class="et-dark">
+    <div class="et-inner">
+      <h2>Contact LEAP AI</h2>
+      <p class="et-sub">King Abdulaziz Branch Road, Riyadh, Saudi Arabia</p>
+      <div class="et-contact">
+        <div>
+          <h4>Our Location</h4>
+          <p>King Abdulaziz Branch Road<br/>Riyadh, Saudi Arabia</p>
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=King+Abdulaziz+Branch+Road,+Riyadh,+Saudi+Arabia" target="_blank">View on map</a></p>
+        </div>
+        <div>
+          <h4>Send an Email</h4>
+          <p><a href="mailto:sales@leapai.ai">sales@leapai.ai</a></p>
+          <p><a href="mailto:sales@leapai.ai">Email us now</a></p>
+        </div>
+        <div>
+          <h4>Call Anytime</h4>
+          <p><a href="tel:+966535533627">+966 53 553 3627</a></p>
+        </div>
+        <div>
+          <h4>Developer</h4>
+          <p><a href="https://www.linkedin.com/in/abdulkaraim-o-385b7a110/" target="_blank">Abdulkaraim Osman</a></p>
+          <p>Tech Manager | Backend Engineer | DevOps Engineer<br/>Bab International Corp For Specialized Services</p>
+          <p><a href="https://www.linkedin.com/in/abdulkaraim-o-385b7a110/" target="_blank">LinkedIn Profile</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="et-footer">
+    <p><strong>Etimad Tenders</strong> &mdash; Odoo 19 Module | Author: <a href="https://leapai.ai" target="_blank">LEAP AI</a></p>
+    <p style="margin-top:6px">
+      Developer: <a href="https://www.linkedin.com/in/abdulkaraim-o-385b7a110/" target="_blank">Abdulkaraim Osman</a>
+      &nbsp;&middot;&nbsp;
+      Data source: <a href="https://tenders.etimad.sa" target="_blank">tenders.etimad.sa</a>
+    </p>
+  </div>
+</div>
