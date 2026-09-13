@@ -146,6 +146,22 @@ h2 { font-size: 1.7rem; font-weight: 700; color: #1a3a5c; margin-bottom: 8px; }
 }
 .code-block .comment { color: #64748b; }
 
+/* ── Contact ─────────────────────────────────────────────── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.contact-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0,0,0,.07);
+  padding: 22px;
+}
+.contact-card h4 { color: #1a3a5c; margin-bottom: 10px; }
+.contact-card p { font-size: .93rem; color: #334155; line-height: 1.6; margin-bottom: 8px; }
+.contact-card a { color: #2563eb; font-weight: 600; text-decoration: none; }
+
 /* ── Footer ──────────────────────────────────────────────── */
 footer {
   background: #1a3a5c;
@@ -358,6 +374,37 @@ Apps → Enable developer mode → search "Etimad" → Install
 
 <span class="comment"># 4. First run — sync sectors, then fetch</span>
 Etimad Tenders → Fetch Tenders → Sync Sectors → Fetch Now</div>
+</div>
+
+<!-- ═══ CONTACT ════════════════════════════════════════════ -->
+<div class="section-dark">
+  <div class="inner">
+    <h2>Contact LEAP AI</h2>
+    <p class="sub">King Abdulaziz Branch Road, Riyadh, Saudi Arabia</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h4>Our Location</h4>
+        <p>
+          King Abdulaziz Branch Road<br/>
+          Riyadh, Saudi Arabia
+        </p>
+        <p>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=King+Abdulaziz+Branch+Road,+Riyadh,+Saudi+Arabia" target="_blank">
+            View on map
+          </a>
+        </p>
+      </div>
+      <div class="contact-card">
+        <h4>Send an Email</h4>
+        <p><a href="mailto:sales@leapai.ai">sales@leapai.ai</a></p>
+        <p><a href="mailto:sales@leapai.ai">Email us now</a></p>
+      </div>
+      <div class="contact-card">
+        <h4>Call Anytime</h4>
+        <p><a href="tel:+966535533627">+966 53 553 3627</a></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ═══ FOOTER ══════════════════════════════════════════════ -->
