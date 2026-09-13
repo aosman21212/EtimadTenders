@@ -1,7 +1,7 @@
 {
     'name': 'Etimad Tenders',
-    'version': '19.0.1.2.0',
-    'summary': 'Fetch Saudi government tenders from the Etimad platform (منصة اعتماد)',
+    'version': '19.0.1.2.1',
+    'summary': 'Fetch Saudi government tenders from the Etimad platform',
     'description': """
         Fetches public government tenders from the Saudi Etimad platform
         (https://tenders.etimad.sa) and stores them in Odoo.
