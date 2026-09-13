@@ -1,6 +1,6 @@
 {
     'name': 'Etimad Tenders',
-    'version': '19.0.1.4.1',
+    'version': '19.0.1.4.2',
     'summary': 'Fetch Saudi government tenders from the Etimad platform',
     'description': """
         Fetches public government tenders from the Saudi Etimad platform
