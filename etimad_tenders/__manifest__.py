@@ -1,6 +1,6 @@
 {
     'name': 'Etimad Tenders',
-    'version': '19.0.1.6.2',
+    'version': '19.0.1.6.3',
     'summary': 'Fetch Saudi government tenders from the Etimad platform',
     'description': """
         Fetches public government tenders from the Saudi Etimad platform
@@ -14,9 +14,9 @@
         - Configurable session cookie, page size, and API endpoint
     """,
     'category': 'Sales/CRM',
-    'author': 'LEAP AI',
+    'author': 'leapai.ai',
     'website': 'https://leapai.ai',
-    'maintainer': 'LEAP AI',
+    'maintainer': 'leapai.ai',
     'support': 'sales@leapai.ai',
     'depends': ['crm', 'mail'],
     'data': [
