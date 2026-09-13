@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_etimad_fetch_wizard_form" model="ir.ui.view">
+        <field name="name">etimad.fetch.wizard.form</field>
+        <field name="model">etimad.fetch.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fetch Tenders from Etimad">
+
+                <group invisible="state == 'done'">
+
+                    <!-- ── Activity / Sector ──────────────────────────── -->
+                    <group string="Activity / Sector Filter">
+                        <field name="activity_ids"
+                               widget="many2many_tags"
+                               placeholder="Leave empty to fetch ALL sectors…"
+                               nolabel="1"
+                               colspan="2"/>
+                        <div class="text-muted small" colspan="2">
+                            Select one or more sectors to limit this fetch.
+                            If the list is empty, click
+                            <strong>Sync Sectors</strong> first.
+                        </div>
+                    </group>
+
+                    <!-- ── Other filters ──────────────────────────────── -->
+                    <group string="Other Filters">
+                        <field name="pages"/>
+                        <field name="tender_name"/>
+                        <field name="agency_name"/>
+                    </group>
+
+                </group>
+
+                <!-- ── Result ─────────────────────────────────────────── -->
+                <group invisible="state == 'draft'">
+                    <field name="result_message"
+                           nolabel="1" widget="text" readonly="1"/>
+                </group>
+
+                <footer>
+                    <button name="action_fetch"
+                            string="Fetch Now"
+                            type="object"
+                            class="btn-primary"
+                            invisible="state == 'done'"/>
+                    <button name="action_sync_activities"
+                            string="Sync Sectors"
+                            type="object"
+                            class="btn-secondary"
+                            invisible="state == 'done'"
+                            help="Refresh the list of activity / sector IDs from Etimad"/>
+                    <button string="Close"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_etimad_fetch_wizard" model="ir.actions.act_window">
+        <field name="name">Fetch Tenders from Etimad</field>
+        <field name="res_model">etimad.fetch.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

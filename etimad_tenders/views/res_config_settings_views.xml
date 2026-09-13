@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_etimad" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.etimad</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Etimad Tenders" string="Etimad Tenders"
+                     name="etimad_tenders">
+                    <block title="Etimad API">
+                        <setting string="Page Size"
+                                 help="Number of tenders to retrieve per API request (max 100).">
+                            <field name="etimad_page_size"/>
+                        </setting>
+                        <setting string="Pages per Scheduled Run"
+                                 help="How many pages to pull on each daily scheduled run.">
+                            <field name="etimad_cron_pages"/>
+                        </setting>
+                        <setting string="Sectors to Fetch (Scheduled)"
+                                 help="Restrict the daily cron to specific activity sectors. Leave empty to fetch ALL sectors.">
+                            <field name="etimad_cron_activity_ids"
+                                   widget="many2many_tags"
+                                   placeholder="All sectors (no filter)"/>
+                            <button name="action_sync_etimad_activities"
+                                    type="object"
+                                    string="Sync Sectors from Etimad"
+                                    icon="fa-refresh"
+                                    class="btn-secondary mt-1"/>
+                        </setting>
+                        <setting string="Custom API Endpoint URL"
+                                 help="Leave blank to use auto-detected endpoint. Override only if Etimad changes their URL.">
+                            <field name="etimad_api_url"/>
+                        </setting>
+                        <setting string="Session Cookie (optional)"
+                                 help="Paste the Cookie header from your Etimad browser session if the API requires authentication. Open Etimad → DevTools (F12) → Network → copy the Cookie header value.">
+                            <field name="etimad_session_cookie" password="True"/>
+                            <div class="text-muted mt-1">
+                                <strong>How to get it:</strong>
+                                Open <a href="https://tenders.etimad.sa" target="_blank">tenders.etimad.sa</a>
+                                → press F12 → Network tab → click any request
+                                → copy the <code>Cookie:</code> header value and paste here.
+                            </div>
+                        </setting>
+                        <setting string="Test Connection">
+                            <button name="action_test_etimad_connection"
+                                    type="object"
+                                    string="Test Connection"
+                                    icon="fa-plug"
+                                    class="btn-secondary"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Action that opens Settings pre-scrolled to the Etimad panel -->
+    <record id="action_etimad_config_settings" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="res_config_settings_view_etimad"/>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'etimad_tenders', 'bin_size': False}</field>
+    </record>
+
+</odoo>

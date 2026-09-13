@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ═══════════════════════════════════════════════════
+         LIST VIEW
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_etimad_tender_list" model="ir.ui.view">
+        <field name="name">etimad.tender.list</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <list string="Etimad Tenders"
+                  decoration-success="state == 'converted'"
+                  decoration-muted="state in ('closed','cancelled')"
+                  decoration-info="state == 'open'">
+                <field name="tender_number" optional="show"/>
+                <field name="name"/>
+                <field name="agency_name"/>
+                <field name="tender_type" optional="show"/>
+                <field name="tender_activity" optional="hide"/>
+                <field name="status"/>
+                <field name="estimated_value" widget="monetary"
+                       options="{'currency_field': False}" optional="show"/>
+                <field name="publish_date" optional="show"/>
+                <field name="last_envelope_date"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'converted'"
+                       decoration-info="state == 'open'"
+                       decoration-muted="state in ('closed','cancelled')"/>
+                <field name="opportunity_id" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════
+         FORM VIEW
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_etimad_tender_form" model="ir.ui.view">
+        <field name="name">etimad.tender.form</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <form string="Etimad Tender">
+                <header>
+                    <button name="action_create_opportunity"
+                            string="Convert to Opportunity"
+                            type="object"
+                            class="btn-primary"
+                            invisible="opportunity_id != False or state == 'converted'"/>
+                    <button name="action_view_opportunity"
+                            string="View Opportunity"
+                            type="object"
+                            invisible="opportunity_id == False"/>
+                    <button name="action_open_url"
+                            string="Open on Etimad"
+                            type="object"
+                            icon="fa-external-link"
+                            invisible="tender_url == False"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="new,open,converted"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_opportunity"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-handshake-o"
+                                invisible="opportunity_id == False">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Opportunity</span>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Tender Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Identification">
+                            <field name="tender_number"/>
+                            <field name="tender_id_external"/>
+                            <field name="tender_url" widget="url"/>
+                        </group>
+                        <group string="Classification">
+                            <field name="agency_name"/>
+                            <field name="branch_name"/>
+                            <field name="tender_type"/>
+                            <field name="tender_activity"/>
+                            <field name="purpose"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Important Dates">
+                            <field name="publish_date"/>
+                            <field name="last_apply_date"/>
+                            <field name="last_envelope_date"/>
+                            <field name="offers_opening_date"/>
+                        </group>
+                        <group string="Financial">
+                            <field name="estimated_value"/>
+                            <field name="booklet_price"/>
+                        </group>
+                    </group>
+                    <group string="CRM">
+                        <field name="opportunity_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Raw Data" name="raw_data">
+                            <field name="raw_data" widget="text"
+                                   readonly="1" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════
+         KANBAN VIEW
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_etimad_tender_kanban" model="ir.ui.view">
+        <field name="name">etimad.tender.kanban</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" default_group_by="state">
+                <field name="name"/>
+                <field name="agency_name"/>
+                <field name="tender_type"/>
+                <field name="status"/>
+                <field name="estimated_value"/>
+                <field name="last_envelope_date"/>
+                <field name="state"/>
+                <field name="opportunity_id"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click">
+                            <strong class="o_kanban_record_title">
+                                <field name="name"/>
+                            </strong>
+                            <div class="o_kanban_record_subtitle text-muted">
+                                <field name="agency_name"/>
+                            </div>
+                            <div class="mt-2">
+                                <span class="badge text-bg-info">
+                                    <field name="tender_type"/>
+                                </span>
+                            </div>
+                            <div class="mt-1">
+                                <i class="fa fa-calendar me-1" title="Deadline"/>
+                                Deadline: <field name="last_envelope_date"/>
+                            </div>
+                            <div t-if="record.estimated_value.value" class="mt-1">
+                                <i class="fa fa-money me-1" title="Value"/>
+                                <field name="estimated_value"/> SAR
+                            </div>
+                            <div t-if="record.opportunity_id.value" class="mt-1">
+                                <span class="badge text-bg-success">Linked to Opportunity</span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════
+         SEARCH VIEW
+    ══════════════════════════════════════════════════════ -->
+    <record id="view_etimad_tender_search" model="ir.ui.view">
+        <field name="name">etimad.tender.search</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <search string="Search Tenders">
+                <field name="name" string="Tender Name / Number"
+                       filter_domain="['|', ('name','ilike',self), ('tender_number','ilike',self)]"/>
+                <field name="agency_name"/>
+                <field name="tender_type"/>
+                <field name="tender_activity"/>
+                <separator/>
+                <filter name="filter_open"
+                        string="Open"
+                        domain="[('state','=','open')]"/>
+                <filter name="filter_new"
+                        string="New"
+                        domain="[('state','=','new')]"/>
+                <filter name="filter_converted"
+                        string="Converted"
+                        domain="[('state','=','converted')]"/>
+                <filter name="filter_no_opportunity"
+                        string="Without Opportunity"
+                        domain="[('opportunity_id','=',False)]"/>
+                <separator/>
+                <filter name="filter_has_deadline"
+                        string="Has Deadline"
+                        domain="[('last_envelope_date', '!=', False)]"/>
+                <group>
+                    <filter name="group_activity"
+                            string="Activity / Sector"
+                            context="{'group_by': 'tender_activity'}"/>
+                    <filter name="group_agency"
+                            string="Agency"
+                            context="{'group_by': 'agency_name'}"/>
+                    <filter name="group_type"
+                            string="Tender Type"
+                            context="{'group_by': 'tender_type'}"/>
+                    <filter name="group_state"
+                            string="State"
+                            context="{'group_by': 'state'}"/>
+                    <filter name="group_publish"
+                            string="Publish Date"
+                            context="{'group_by': 'publish_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ═══════════════════════════════════════════════════
+         ACTION
+    ══════════════════════════════════════════════════════ -->
+    <record id="action_etimad_tender" model="ir.actions.act_window">
+        <field name="name">Etimad Tenders</field>
+        <field name="res_model">etimad.tender</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="view_etimad_tender_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tenders yet!
+            </p>
+            <p>
+                Use <strong>Fetch Tenders</strong> to pull the latest
+                government tenders from the Etimad platform.
+            </p>
+        </field>
+    </record>
+
+</odoo>

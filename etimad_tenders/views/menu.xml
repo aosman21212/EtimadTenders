@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ── Root app (shows as tile on /odoo home screen) ─────────────────── -->
+    <menuitem id="menu_etimad_root"
+              name="Etimad Tenders"
+              web_icon="etimad_tenders,static/description/icon.png"
+              sequence="90"/>
+
+    <!-- ── Sub-menus ──────────────────────────────────────────────────────── -->
+    <menuitem id="menu_etimad_tenders"
+              name="All Tenders"
+              parent="menu_etimad_root"
+              action="action_etimad_tender"
+              sequence="10"/>
+
+    <menuitem id="menu_etimad_fetch"
+              name="Fetch Tenders"
+              parent="menu_etimad_root"
+              action="action_etimad_fetch_wizard"
+              sequence="20"/>
+
+    <menuitem id="menu_etimad_activities"
+              name="Activity Sectors"
+              parent="menu_etimad_root"
+              action="action_etimad_activity"
+              sequence="30"/>
+
+    <menuitem id="menu_etimad_config"
+              name="Configuration"
+              parent="menu_etimad_root"
+              action="action_etimad_config_settings"
+              sequence="99"/>
+
+</odoo>

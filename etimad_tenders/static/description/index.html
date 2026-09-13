@@ -1,0 +1,108 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Etimad Tenders — منصة اعتماد</h2>
+        <h3 class="oe_slogan">
+            Automatically fetch Saudi government tenders from
+            <a href="https://tenders.etimad.sa" target="_blank">tenders.etimad.sa</a>
+            and convert them into CRM opportunities.
+        </h3>
+        <div class="oe_span12">
+            <img src="screen_list.png" class="oe_picture oe_screenshot"
+                 alt="Tenders list view showing 24 live tenders fetched from Etimad"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Full Tender Details</h2>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                Every tender is stored with its full metadata: agency name, tender type,
+                activity sector, estimated value, submission deadline, and a direct link
+                back to the Etimad platform for authenticated access.
+            </p>
+            <ul>
+                <li>Tender reference and external Etimad ID</li>
+                <li>Government agency and branch</li>
+                <li>Estimated value in SAR</li>
+                <li>Publish date, submission deadline, envelope &amp; offers dates</li>
+                <li>One-click conversion to a CRM Opportunity</li>
+            </ul>
+        </div>
+        <div class="oe_span6">
+            <img src="screen_form.png" class="oe_picture oe_screenshot"
+                 alt="Tender form view with full metadata"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Manual Fetch Wizard</h2>
+        <div class="oe_span6">
+            <img src="screen_wizard.png" class="oe_picture oe_screenshot"
+                 alt="Manual fetch wizard dialog"/>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                Run a manual fetch at any time from the <strong>Fetch Tenders</strong> menu.
+                Filter by keyword or agency, choose how many pages to pull, and see instantly
+                how many records were created vs. updated.
+            </p>
+            <p>
+                A <strong>daily scheduled action</strong> (cron) runs automatically and
+                keeps the database up to date without manual intervention.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Configuration</h2>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+                Configure the integration from <strong>Etimad Tenders → Configuration</strong>:
+            </p>
+            <ul>
+                <li><strong>Page Size</strong> — records per API request (max 100)</li>
+                <li><strong>Pages per Cron</strong> — how many pages to pull each day</li>
+                <li><strong>Custom API URL</strong> — override if Etimad changes their endpoint</li>
+                <li><strong>Session Cookie</strong> — optional, for authenticated access</li>
+                <li><strong>Test Connection</strong> — verify connectivity in one click</li>
+            </ul>
+        </div>
+        <div class="oe_span6">
+            <img src="screen_config.png" class="oe_picture oe_screenshot"
+                 alt="Configuration settings for Etimad API"/>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Key Features</h2>
+        <div class="oe_span4">
+            <h4>🤖 Bot Protection Bypass</h4>
+            <p>
+                Smart session warm-up collects F5 TrafficShield cookies from the
+                Etimad listing page so all API calls succeed without CAPTCHAs.
+            </p>
+        </div>
+        <div class="oe_span4">
+            <h4>🎯 CRM Integration</h4>
+            <p>
+                Convert any tender into a CRM Opportunity with agency, estimated
+                value, and deadline pre-filled — ready for your sales team.
+            </p>
+        </div>
+        <div class="oe_span4">
+            <h4>🔄 Duplicate-safe Upsert</h4>
+            <p>
+                Existing tenders are updated in-place; only new records are created.
+                Enforced by a unique constraint on the Etimad tender ID.
+            </p>
+        </div>
+    </div>
+</section>
