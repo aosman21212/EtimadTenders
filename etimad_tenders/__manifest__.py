@@ -1,3 +1,15 @@
+# -*- coding: utf-8 -*-
+# =============================================================================
+#  Etimad Tenders
+# -----------------------------------------------------------------------------
+#  Location  : King Abdulaziz Branch Road, Riyadh, Saudi Arabia
+#  Email     : sales@leapai.ai
+#  Phone     : +966 53 553 3627
+#  Website   : https://leapai.ai
+#  Developer : Abdulkaraim Osman — Tech Manager | Backend Engineer | DevOps Engineer
+#              at Bab International Corp For Specialized Services
+#  LinkedIn  : https://www.linkedin.com/in/abdulkaraim-o-385b7a110/
+# =============================================================================
 {
     'name': 'Etimad Tenders',
     'version': '19.0.1.6.3',
@@ -15,9 +27,9 @@
     """,
     'category': 'Sales/CRM',
     'author': 'leapai.ai',
-    'website': 'https://leapai.ai',
-    'maintainer': 'leapai.ai',
+    'maintainer': 'Abdulkaraim Osman',
     'support': 'sales@leapai.ai',
+    'website': 'https://leapai.ai',
     'depends': ['crm', 'mail'],
     'data': [
         'security/ir.model.access.csv',
