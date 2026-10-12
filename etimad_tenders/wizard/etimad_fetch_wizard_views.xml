@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_etimad_fetch_wizard_form" model="ir.ui.view">
+        <field name="name">etimad.fetch.wizard.form</field>
+        <field name="model">etimad.fetch.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Fetch Etimad Tenders Now">
+                <group>
+                    <field name="max_pages"/>
+                    <field name="page_size"/>
+                    <field name="activity_ids" widget="many2many_tags"/>
+                    <field name="tender_name"/>
+                    <field name="agency_name"/>
+                </group>
+                <footer>
+                    <button name="action_fetch_now" type="object" string="Fetch Now" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_etimad_fetch_wizard" model="ir.actions.act_window">
+        <field name="name">Fetch Tenders Now</field>
+        <field name="res_model">etimad.fetch.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_etimad_tenders_fetch_now" name="Fetch Tenders Now" parent="menu_etimad_tenders_root"
+              action="action_etimad_fetch_wizard" sequence="20"/>
+
+</odoo>

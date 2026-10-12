@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_etimad" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.etimad.tenders</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Etimad Tenders" string="Etimad Tenders" name="etimad_tenders"
+                     groups="etimad_tenders.group_etimad_tender_manager">
+                    <block title="Connection">
+                        <setting help="Leave empty to auto-detect the working endpoint among the known candidates.">
+                            <field name="etimad_api_url"/>
+                        </setting>
+                        <setting help="Public page fetched first to obtain any bot-protection cookies (e.g. F5 TrafficShield).">
+                            <field name="etimad_warmup_url"/>
+                        </setting>
+                        <setting help="Optional raw Cookie header, if the platform requires an authenticated session.">
+                            <field name="etimad_session_cookie" password="True"/>
+                        </setting>
+                        <setting>
+                            <button name="action_etimad_test_connection" type="object"
+                                    string="Test Connection" class="btn-secondary"/>
+                        </setting>
+                    </block>
+                    <block title="Sync">
+                        <setting help="Tenders requested per API call (max 100).">
+                            <field name="etimad_page_size"/>
+                        </setting>
+                        <setting help="Maximum pages fetched per scheduled/manual sync run.">
+                            <field name="etimad_cron_pages"/>
+                        </setting>
+                        <setting help="Restrict the daily sync to specific activities/sectors. Leave empty to fetch all.">
+                            <field name="etimad_activity_ids" widget="many2many_tags"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

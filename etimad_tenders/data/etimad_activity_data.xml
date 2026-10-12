@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Placeholder list of 19 generic government-procurement sectors, matching
+    the "19 sectors available" count from the app's public description.
+    ADJUST: replace with the real Etimad sector taxonomy once known; these
+    are only seeded so the Activity Sector field isn't empty on install.
+-->
+<odoo noupdate="1">
+
+    <record id="sector_construction" model="etimad.activity">
+        <field name="name">Construction &amp; Infrastructure</field>
+    </record>
+    <record id="sector_it" model="etimad.activity">
+        <field name="name">Information Technology</field>
+    </record>
+    <record id="sector_healthcare" model="etimad.activity">
+        <field name="name">Healthcare &amp; Medical</field>
+    </record>
+    <record id="sector_education" model="etimad.activity">
+        <field name="name">Education &amp; Training</field>
+    </record>
+    <record id="sector_consulting" model="etimad.activity">
+        <field name="name">Consulting Services</field>
+    </record>
+    <record id="sector_transportation" model="etimad.activity">
+        <field name="name">Transportation &amp; Logistics</field>
+    </record>
+    <record id="sector_energy" model="etimad.activity">
+        <field name="name">Energy &amp; Utilities</field>
+    </record>
+    <record id="sector_environment" model="etimad.activity">
+        <field name="name">Environmental Services</field>
+    </record>
+    <record id="sector_security" model="etimad.activity">
+        <field name="name">Security Services</field>
+    </record>
+    <record id="sector_facilities" model="etimad.activity">
+        <field name="name">Facilities Management</field>
+    </record>
+    <record id="sector_telecom" model="etimad.activity">
+        <field name="name">Telecommunications</field>
+    </record>
+    <record id="sector_catering" model="etimad.activity">
+        <field name="name">Food &amp; Catering</field>
+    </record>
+    <record id="sector_office_supplies" model="etimad.activity">
+        <field name="name">Office Supplies &amp; Equipment</field>
+    </record>
+    <record id="sector_financial" model="etimad.activity">
+        <field name="name">Financial Services</field>
+    </record>
+    <record id="sector_legal" model="etimad.activity">
+        <field name="name">Legal Services</field>
+    </record>
+    <record id="sector_marketing" model="etimad.activity">
+        <field name="name">Marketing &amp; Advertising</field>
+    </record>
+    <record id="sector_rd" model="etimad.activity">
+        <field name="name">Research &amp; Development</field>
+    </record>
+    <record id="sector_agriculture" model="etimad.activity">
+        <field name="name">Agriculture</field>
+    </record>
+    <record id="sector_other" model="etimad.activity">
+        <field name="name">Other</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,76 @@
+<section class="oe_container">
+  <style>
+    .etimad-desc { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #2b2b33; max-width: 900px; margin: 0 auto; }
+    .etimad-desc h2 { color: #714B67; border-bottom: 2px solid #71527640; padding-bottom: 8px; margin-top: 36px; }
+    .etimad-desc .hero { display: flex; align-items: center; gap: 20px; padding: 24px 0; }
+    .etimad-desc .hero img.logo { height: 56px; }
+    .etimad-desc .hero h1 { margin: 0; font-size: 26px; color: #714B67; }
+    .etimad-desc .hero p { margin: 4px 0 0; color: #666; font-size: 15px; }
+    .etimad-desc .shot { width: 100%; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.08); margin: 12px 0 28px; }
+    .etimad-desc ul.features { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+    .etimad-desc ul.features li { padding-left: 26px; position: relative; font-size: 14px; line-height: 1.5; }
+    .etimad-desc ul.features li:before { content: "✓"; position: absolute; left: 0; color: #2e7d32; font-weight: bold; }
+    .etimad-desc .note { background: #fff8e1; border: 1px solid #ffe08280; border-radius: 6px; padding: 12px 16px; font-size: 13px; color: #6d5600; margin: 16px 0; }
+    .etimad-desc code { background: #f1f1f4; padding: 1px 6px; border-radius: 3px; font-size: 13px; }
+    .etimad-desc .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; background: #faf8fb; border: 1px solid #71527630; border-radius: 8px; padding: 18px 22px; font-size: 14px; }
+    .etimad-desc .contact .row { display: flex; gap: 8px; }
+    .etimad-desc .contact .row .label { color: #714B67; font-weight: 600; min-width: 90px; }
+    .etimad-desc .contact a { color: #714B67; text-decoration: none; }
+    .etimad-desc .contact a:hover { text-decoration: underline; }
+    .etimad-desc .contact .dev { grid-column: 1 / -1; border-top: 1px solid #71527630; margin-top: 6px; padding-top: 12px; }
+  </style>
+  <div class="etimad-desc">
+    <div class="hero">
+      <img class="logo" src="icon.svg" alt="Etimad logo"/>
+      <div>
+        <h1>Etimad Tenders</h1>
+        <p>Sync Saudi government tenders from the Etimad platform (tenders.etimad.sa) straight into Odoo, and convert any tender into a CRM opportunity in one click.</p>
+      </div>
+    </div>
+
+    <img class="shot" src="screenshot1.png" alt="Etimad Tenders list view, showing real synced tenders"/>
+
+    <h2>What it does</h2>
+    <ul class="features">
+      <li>Pulls open tenders from <code>tenders.etimad.sa</code> via its visitor-facing endpoint, with pagination</li>
+      <li>Stores reference number, agency, branch, activity/sector, submission &amp; envelope dates</li>
+      <li>One-click <strong>Convert to Opportunity</strong> into a CRM lead, pre-filled</li>
+      <li>Manual <strong>Fetch Tenders Now</strong> wizard, filterable by activity</li>
+      <li>Daily scheduled sync (installed inactive by default)</li>
+      <li>Direct link back to the tender's page on Etimad</li>
+      <li>Activity/sector master data, built automatically as tenders sync</li>
+      <li>Dedicated User/Manager security groups</li>
+    </ul>
+
+    <h2>Good to know</h2>
+    <div class="note">
+      The Etimad platform sits behind bot-protection (F5 TrafficShield) that occasionally challenges requests
+      with a CAPTCHA depending on the connecting network. The module does a "warm-up" request to pick up
+      session cookies automatically, and Settings also accepts a manually-supplied session cookie
+      (e.g. copied from a browser that already solved the challenge once) as a fallback.
+    </div>
+
+    <h2>Configuration</h2>
+    <ul class="features">
+      <li>Custom API endpoint override</li>
+      <li>Warm-up URL (bot-protection cookie pickup)</li>
+      <li>Session cookie (optional, manual fallback)</li>
+      <li>Page size / pages per sync</li>
+      <li>Restrict sync to specific activities</li>
+      <li>Built-in "Test Connection" check</li>
+    </ul>
+
+    <h2>Contact &amp; Support</h2>
+    <div class="contact">
+      <div class="row"><span class="label">Location</span><span>King Abdulaziz Branch Road, Riyadh, Saudi Arabia</span></div>
+      <div class="row"><span class="label">Email</span><a href="mailto:sales@leapai.ai">sales@leapai.ai</a></div>
+      <div class="row"><span class="label">Phone</span><span>+966 53 553 3627</span></div>
+      <div class="row"><span class="label">Website</span><a href="https://leapai.ai" target="_blank" rel="noopener">leapai.ai</a></div>
+      <div class="row dev"><span class="label">Developer</span>
+        <span>Abdulkaraim Osman — Tech Manager | Backend Engineer | DevOps Engineer at Bab International Corp For Specialized Services
+          · <a href="https://linkedin.com/in/abdulkaraim-o-385b7a110" target="_blank" rel="noopener">LinkedIn</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

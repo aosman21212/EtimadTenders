@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_etimad_tender_tree" model="ir.ui.view">
+        <field name="name">etimad.tender.tree</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <tree string="Etimad Tenders" decoration-muted="state in ('closed', 'expired')">
+                <field name="name"/>
+                <field name="reference" optional="show"/>
+                <field name="agency_name"/>
+                <field name="activity_id" optional="show"/>
+                <field name="estimated_value" sum="Total Estimated Value"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="submission_date"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'converted'"
+                       decoration-info="state == 'new'"
+                       decoration-muted="state in ('closed', 'expired')"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_etimad_tender_form" model="ir.ui.view">
+        <field name="name">etimad.tender.form</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <form string="Etimad Tender">
+                <header>
+                    <button name="action_convert_to_opportunity" type="object"
+                            string="Convert to Opportunity" class="oe_highlight"
+                            invisible="opportunity_id"/>
+                    <button name="action_open_on_etimad" type="object"
+                            string="View on Etimad"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new,in_progress,converted"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="Tender title"/></h1>
+                    </div>
+                    <group>
+                        <group name="main">
+                            <field name="tender_id_external"/>
+                            <field name="reference"/>
+                            <field name="agency_name"/>
+                            <field name="branch_name"/>
+                            <field name="activity_id"/>
+                        </group>
+                        <group name="dates_values">
+                            <field name="estimated_value"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="publish_date"/>
+                            <field name="submission_date"/>
+                            <field name="envelope_date"/>
+                            <field name="tender_url" widget="url"/>
+                            <field name="opportunity_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Technical" name="technical">
+                        <field name="last_synced_at" readonly="1"/>
+                        <field name="raw_data" readonly="1" groups="base.group_no_one"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_etimad_tender_search" model="ir.ui.view">
+        <field name="name">etimad.tender.search</field>
+        <field name="model">etimad.tender</field>
+        <field name="arch" type="xml">
+            <search string="Search Etimad Tenders">
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="agency_name"/>
+                <field name="activity_id"/>
+                <separator/>
+                <filter string="New" name="filter_new" domain="[('state', '=', 'new')]"/>
+                <filter string="Converted" name="filter_converted" domain="[('state', '=', 'converted')]"/>
+                <filter string="Closed/Expired" name="filter_closed" domain="[('state', 'in', ('closed', 'expired'))]"/>
+                <separator/>
+                <filter string="Submission Deadline" name="filter_submission_date" date="submission_date"/>
+                <group string="Group By" expand="0">
+                    <filter string="Agency" name="group_agency" context="{'group_by': 'agency_name'}"/>
+                    <filter string="Sector" name="group_sector" context="{'group_by': 'activity_id'}"/>
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_etimad_tender" model="ir.actions.act_window">
+        <field name="name">Tenders</field>
+        <field name="res_model">etimad.tender</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_etimad_tender_search"/>
+        <field name="context">{'search_default_filter_new': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tenders yet.
+            </p><p>
+                Tenders synced from Etimad will show up here. Use
+                "Fetch Tenders Now" to pull them manually, or configure the
+                daily sync in Settings.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_etimad_tenders_root" name="Etimad Tenders" sequence="85"
+              web_icon="etimad_tenders,static/description/icon.png"/>
+    <menuitem id="menu_etimad_tenders_main" name="Tenders" parent="menu_etimad_tenders_root"
+              action="action_etimad_tender" sequence="10"/>
+
+</odoo>

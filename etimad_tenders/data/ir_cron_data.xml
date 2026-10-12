@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!--
+        Daily sync, matching the app's described "fetches tenders through
+        daily scheduled actions" behaviour. Left INACTIVE by default since
+        the real Etimad API endpoint/auth are not configured yet; activate
+        it from Settings > Technical > Scheduled Actions once Settings >
+        Etimad Tenders has been filled in and "Test Connection" succeeds.
+    -->
+    <record id="ir_cron_etimad_tender_fetch" model="ir.cron">
+        <field name="name">Etimad Tenders: Daily Sync</field>
+        <field name="model_id" ref="model_etimad_tender"/>
+        <field name="state">code</field>
+        <field name="code">model.action_scheduled_fetch()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>
